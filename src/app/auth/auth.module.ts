@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthComponent } from './auth.component';
+// import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SheardModule } from '../sheard/sheard.module';
@@ -19,8 +19,8 @@ const routes: Routes = [
 @NgModule({ 
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),SheardModule
+    RouterModule.forChild(routes),SheardModule,
   ],
-  declarations: [AuthComponent,LoginComponent]
+  declarations: [LoginComponent]
 })
 export class AuthModule { }

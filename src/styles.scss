@@ -37,3 +37,21 @@ $food-project-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.logo{
+ width: 22.875rem; /* 366px / 16px = 22.875rem */
+height: 6.5rem;   /* 104px / 16px = 6.5rem */
+
+}
+
+.green-btn{
+    background-color: #4AA35A;
+    margin-top: 2rem;
+    margin-bottom: 9px;
+    font-size: 1.25rem;
+font-weight: 700;
+text-transform: capitalize;
+color: #fff;
+padding: .75rem 0;
+}
