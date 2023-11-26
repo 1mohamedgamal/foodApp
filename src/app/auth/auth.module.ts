@@ -4,23 +4,32 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SheardModule } from '../sheard/sheard.module';
-
-const routes: Routes = [ 
-{
-
-  path: '' , redirectTo: 'login', pathMatch: 'full'
-},
+import { RequestResetPasswordComponent } from './request-reset-password/request-reset-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { SpinnerComponent } from '../sheard/spinner/spinner.component';
+// SpinnerComponent
+const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+  },
+];
 
-    path : 'login', component:LoginComponent
-  }
-]
-
-@NgModule({ 
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),SheardModule,
+@NgModule({
+  imports: [CommonModule, RouterModule.forChild(routes), SheardModule],
+  declarations: [
+    LoginComponent,
+    RequestResetPasswordComponent,
+    ResetPasswordComponent,
   ],
-  declarations: [LoginComponent]
 })
-export class AuthModule { }
+export class AuthModule {}

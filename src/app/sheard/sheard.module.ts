@@ -6,8 +6,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,9 +19,25 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    RouterModule,
   ],
-  declarations: [SheardComponent],
-  exports: [MatIconModule, MatDividerModule, MatButtonModule ,HttpClientModule,
-    ReactiveFormsModule],
+  declarations: [
+    SheardComponent,
+    SpinnerComponent,
+    NavbarComponent,
+    SidebarComponent,
+  ],
+  exports: [
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    SpinnerComponent,
+    NavbarComponent,
+    SidebarComponent,
+  ],
 })
 export class SheardModule {}

@@ -1,0 +1,21 @@
+<section id="side">
+  <div class="text-center mt-3">
+    <img
+      src="../../../assets/images/logorest.png"
+      alt=""
+      class="w-25"
+      srcset=""
+    />
+  </div>
+  <a
+  class="d-block text-decoration-none"
+    [routerLink]="item.link"
+    routerLinkActive="bg-active"
+    *ngFor="let item of menu"
+  >
+    <div class="item">
+      <span><i [class]="item.icon"></i></span>
+      <span class="mx-2 m-3">{{ item.title }}</span>
+    </div>
+  </a>
+</section>
