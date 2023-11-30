@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { RequestResetPasswordComponent } from '../request-reset-password/request-reset-password.component';
 import { Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -38,11 +39,14 @@ export class LoginComponent {
     this.showPassword = !this.showPassword;
   }
   onSubmit(data: FormGroup) {
+    // debugger;
     console.log(data);
 
     this._AuthService.Onlogin(data.value).subscribe({
       next: (res) => {
-        console.log(res);
+        let isClient = this._AuthService.isClientUser();
+
+        this._router.navigate(['/dashboard']);
       },
       error: (err: any) => {
         console.log(err.error.message);
@@ -74,8 +78,8 @@ export class LoginComponent {
       next: (res) => {
         console.log(res);
         this.message = res.message;
-        localStorage.setItem('userToken',res.token)
-      this._AuthService.getProfile();
+        localStorage.setItem('userToken', res.token);
+        this._AuthService.getProfile();
       },
       error: (err) => {
         console.log(err.error.message);

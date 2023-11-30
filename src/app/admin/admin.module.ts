@@ -7,12 +7,12 @@ import { SheardModule } from '../sheard/sheard.module';
 const routes: Routes = [
   { path: '', component: AdminComponent },
   {
-    path: 'recipes',
+    path: 'recipes', // Should match the link '/dashboard/admin/recipes'
     loadChildren: () =>
       import('../admin/recipes/recipes.module').then((m) => m.RecipesModule),
   },
   {
-    path: 'users',
+    path: 'Users',
     loadChildren: () =>
       import('../admin/users/users.module').then((m) => m.UsersModule),
   },
@@ -22,11 +22,6 @@ const routes: Routes = [
       import('../admin/categories/categories.module').then(
         (m) => m.CategoriesModule
       ),
-  },
-  {
-    path: 'recipes',
-    loadChildren: () =>
-      import('../admin/recipes/recipes.module').then((m) => m.RecipesModule),
   },
 ];
 

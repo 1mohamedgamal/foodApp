@@ -1,6 +1,7 @@
 #side {
   background-color: #1f384c;
   border-top-right-radius: 58px;
+  height: auto;
 }
 .item {
   display: flex;
@@ -9,5 +10,5 @@
   padding: 5px 25px;
 }
 .bg-active {
-  background-color: rgba(0, 146, 71, 0.1)!important;
+  background-color: rgba(0, 146, 71, 0.1) !important;
 }

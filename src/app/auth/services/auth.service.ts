@@ -1,35 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-
-
-  role:string | null = '';
+  role: string | null = '';
   constructor(private _HttpClient: HttpClient) {}
 
-
-  getProfile(){
-    let encoded : any = localStorage.getItem('userToken');
-    let decoded : any = jwtDecode(encoded);
-    console.log('role' , decoded.userGroup);
+  getProfile() {
+    let encoded: any = localStorage.getItem('userToken');
+    let decoded: any = jwtDecode(encoded);
+    console.log('role', decoded.userGroup);
     localStorage.setItem('userName', decoded.userName);
-this.getRole();
-    }
+    this.getRole();
+  }
 
-    getRole()
-    {
-      if(localStorage.getItem('userToken') !== null && localStorage.getItem('role')){
-        this.role = localStorage.getItem('role');
-      }
+  getRole() {
+    if (
+      localStorage.getItem('userToken') !== null &&
+      localStorage.getItem('role')
+    ) {
+      this.role = localStorage.getItem('role');
     }
+  }
 
   Onlogin(data: any): Observable<any> {
-    return this._HttpClient.post('Users/Login', data);
+    return this._HttpClient.post('Users/Login', data).pipe(
+      tap((data: any) => {
+        if (data.token) {
+          localStorage.setItem('userToken', data.token);
+          let decoded: any = jwtDecode(data.token);
+          localStorage.setItem('role', decoded.userGroup);
+        }
+      })
+    );
   }
 
   onResetRequest(data: string): Observable<any> {
@@ -39,5 +46,31 @@ this.getRole();
     return this._HttpClient.post('Users/Reset', data);
   }
 
+  isClientUser() {
+    let encoded: any = localStorage.getItem('userToken');
+    if (encoded) {
+      let decoded: any = jwtDecode(encoded);
+      if (decoded.userGroup == 'SuperAdmin') {
+        return false;
+      }
+      return true;
+    }
+    return false;
+  }
+
+  isLoggined() {
+    let encoded: any = localStorage.getItem('userToken');
+    if (encoded) {
+      let decoded: any = jwtDecode(encoded);
+      if (decoded?.userGroup) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+  onChangePassword(data: any): Observable<any> {
+    return this._HttpClient.put('Users/ChangePassword', data);
+  }
 }
 

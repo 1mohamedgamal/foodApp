@@ -7,10 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+// import { AppAuthGuard } from './auth.guard';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,12 +23,7 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     RouterModule,
   ],
-  declarations: [
-    SheardComponent,
-    SpinnerComponent,
-    NavbarComponent,
-    SidebarComponent,
-  ],
+  declarations: [SheardComponent, NavbarComponent, SidebarComponent],
   exports: [
     MatIconModule,
     MatDividerModule,
@@ -35,9 +31,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     ReactiveFormsModule,
     MatDialogModule,
-    SpinnerComponent,
     NavbarComponent,
-    SidebarComponent,
+    SidebarComponent
   ],
 })
 export class SheardModule {}

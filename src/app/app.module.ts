@@ -9,8 +9,10 @@ import { GlobalInterceptor } from './interceptors/global.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
-import { SpinnerComponent } from './sheard/spinner/spinner.component';
 import { SheardModule } from './sheard/sheard.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
+import {AppAuthGuard} from './sheard/auth.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,10 +23,11 @@ import { SheardModule } from './sheard/sheard.module';
     HttpClientModule,
     ToastrModule,
     // SpinnerComponent,
-SheardModule,
+    SheardModule,
     ToastrModule.forRoot({
       closeButton: true,
     }),
+    NgxSpinnerModule,
   ],
   providers: [
     {
@@ -32,7 +35,10 @@ SheardModule,
       useClass: GlobalInterceptor,
       multi: true,
     },
-    ],
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },AppAuthGuard
+
+   
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

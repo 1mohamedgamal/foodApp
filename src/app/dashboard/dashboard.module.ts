@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SheardModule } from '../sheard/sheard.module';
-import { AdminModule } from '../admin/admin.module';
 
 const routes: Routes = [
   {
@@ -16,9 +15,9 @@ const routes: Routes = [
           import('../admin/admin.module').then((m) => m.AdminModule),
       },
       {
-        path: 'admin',
+        path: 'user',
         loadChildren: () =>
-          import('../user/user.module').then((m) => m.UserModule),
+          import('../user/user.module').then((m) => m.UsersModule),
       },
     ],
   },
