@@ -10,7 +10,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
-// import { AppAuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     RouterModule,
   ],
-  declarations: [SheardComponent, NavbarComponent, SidebarComponent],
+  declarations: [SheardComponent, NavbarComponent, SidebarComponent, HomeComponent],
   exports: [
     MatIconModule,
     MatDividerModule,

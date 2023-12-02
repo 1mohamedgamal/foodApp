@@ -1,13 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { UsersComponent } from './users.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user.component';
 import { SheardModule } from '../sheard/sheard.module';
-// import { SheardModule } from 'src/app/sheard/sheard.module';
-// import { UsersComponent } from '../admin/users/users.component';
 
-const routes: Routes = [{ path: '', component: UserComponent }];
+const routes: Routes = [
+  { path: '', component: UserComponent },
+  {
+    path: 'userRecipes',
+    loadChildren: () =>
+      import('./userRecipes/userRecipes.module').then(
+        (m) => m.UserRecipesModule
+      ),
+  },
+  {
+    path: 'favourites',
+    loadChildren: () =>
+      import('./favourites/favourites.module').then((m) => m.FavouritesModule),
+  },
+];
 
 
 @NgModule({

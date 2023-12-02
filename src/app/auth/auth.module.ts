@@ -7,6 +7,7 @@ import { SheardModule } from '../sheard/sheard.module';
 import { RequestResetPasswordComponent } from './request-reset-password/request-reset-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { LogOutComponent } from './log-out/log-out.component';
 // SpinnerComponent
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
     path: 'change-password',
     component: ChangePasswordComponent,
   },
+  {
+    path: 'logout',
+    component: LogOutComponent,
+  },
 ];
 
 @NgModule({
@@ -35,6 +40,7 @@ const routes: Routes = [
     RequestResetPasswordComponent,
     ResetPasswordComponent,
     ChangePasswordComponent,
+    LogOutComponent,
   ],
 })
 export class AuthModule {}

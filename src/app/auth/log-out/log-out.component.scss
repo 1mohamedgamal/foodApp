@@ -1,0 +1,41 @@
+/* logout-confirmation.component.css */
+
+/* Full-screen overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the transparency or color as needed */
+  z-index: 9999; /* Ensure it's above other content */
+}
+
+/* Logout confirmation modal */
+.logout-section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 80%;
+  text-align: center;
+  z-index: 10000; /* Ensure it's above the overlay */
+}
+
+.confirmation-message {
+  margin-bottom: 20px;
+}
+
+.buttons button {
+  min-width: 120px;
+}

@@ -6,15 +6,16 @@ import { SheardModule } from '../sheard/sheard.module';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
+
   {
-    path: 'recipes', // Should match the link '/dashboard/admin/recipes'
+    path: 'recipes',
     loadChildren: () =>
       import('../admin/recipes/recipes.module').then((m) => m.RecipesModule),
   },
   {
     path: 'Users',
     loadChildren: () =>
-      import('../admin/users/users.module').then((m) => m.UsersModule),
+      import('./users/users.module').then((m) => m.UsersModule),
   },
   {
     path: 'categories',
@@ -23,6 +24,12 @@ const routes: Routes = [
         (m) => m.CategoriesModule
       ),
   },
+  {
+    path: 'Users',
+    loadChildren: () =>
+      import('../admin/users/users.module').then((m) => m.UsersModule),
+  },
+  
 ];
 
 @NgModule({

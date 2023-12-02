@@ -20,6 +20,12 @@ const routes: Routes = [
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
     canActivate: [AppAuthGuard],
   },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./user/user.module').then((m) => m.UsersModule  ),
+    canActivate: [AppAuthGuard],
+  },
 ];
 
 @NgModule({

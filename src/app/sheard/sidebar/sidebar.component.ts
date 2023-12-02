@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
+import { LogOutComponent } from 'src/app/auth/log-out/log-out.component';
 import { AuthService } from 'src/app/auth/services/auth.service';
 interface IMenu {
   title: string;
@@ -24,7 +25,7 @@ export class SidebarComponent {
   // menu: any;
   isOpened: boolean = true;
   ngOnInit() {}
-  isAdmin(): Boolean {
+  isAdmin(): boolean {
     return this._AuthService.role == 'SuperAdmin' ? true : false;
   }
   isUser(): boolean {
@@ -33,28 +34,40 @@ export class SidebarComponent {
 
   menu: IMenu[] = [
     {
-      title: 'Home',
+      title: 'home',
       icon: 'fa-solid fa-home',
-      link: '/dashboard/Home',
-      isActive: true,
+      link: '/dashboard',
+      isActive: this.isAdmin() || this.isUser(),
     },
     {
       title: 'Users',
       icon: ' fa-solid fa-users',
       link: '/dashboard/admin/Users',
-      isActive: true,
+      isActive: this.isAdmin(),
     },
     {
       title: 'Categories',
       icon: 'fa-solid fa-table-cells',
       link: '/dashboard/admin/categories',
-      isActive: true,
+      isActive: this.isAdmin(),
     },
     {
       title: 'Recipes',
       icon: 'fa-solid fa-address-card',
       link: '/dashboard/admin/recipes',
-      isActive: true,
+      isActive: this.isAdmin(),
+    },
+    {
+      title: 'userRecipes',
+      icon: 'fa-solid fa-calendar-day',
+      link: '/dashboard/user/userRecipes',
+      isActive: this.isUser(),
+    },
+    {
+      title: 'favourites',
+      icon: 'fa-solid fa-calendar-day',
+      link: '/dashboard/user/favourites',
+      isActive: this.isUser(),
     },
     // {
     //   title: 'change password',
@@ -72,7 +85,7 @@ export class SidebarComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(ChangePasswordComponent, {
       data: {},
-      width: '50%',
+      width: '40%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -85,9 +98,18 @@ export class SidebarComponent {
     });
   }
   logOut() {
-    localStorage.removeItem('userToken');
-    localStorage.removeItem('role');
-    localStorage.removeItem('userName');
-    this.router.navigate(['/auth']);
+    const dialogRef = this.dialog.open(LogOutComponent, {
+      data: {},
+      width: '80%',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        localStorage.removeItem('userToken');
+        localStorage.removeItem('role');
+        localStorage.removeItem('userName');
+        this.router.navigate(['/auth']);
+      }
+    });
   }
 }

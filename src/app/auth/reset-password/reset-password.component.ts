@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -11,8 +11,9 @@ import { ToastrService } from 'ngx-toastr';
 export class ResetPasswordComponent implements OnInit {
   constructor(
     private _AuthService: AuthService,
-    private _toastr: ToastrService
-  ) {}
+    private _toastr: ToastrService,
+private _router: Router
+    ) {}
 
   userEmail = localStorage.getItem('email');
   resetForm = new FormGroup({
@@ -53,7 +54,7 @@ export class ResetPasswordComponent implements OnInit {
       },
       complete: () => {
         this._toastr.success('Welcome Bro');
-        // this._router.navigate(['/admin/dashboard'])
+        this._router.navigate(['/admin/dashboard'])
       },
     });
   }
