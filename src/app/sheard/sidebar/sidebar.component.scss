@@ -12,3 +12,6 @@
 .bg-active {
   background-color: rgba(0, 146, 71, 0.1) !important;
 }
+.row > div {
+  transition: all 1s;
+}

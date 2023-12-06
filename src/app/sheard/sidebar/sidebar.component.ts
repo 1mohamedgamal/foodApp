@@ -85,7 +85,7 @@ export class SidebarComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(ChangePasswordComponent, {
       data: {},
-      width: '40%',
+      width: '30%',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

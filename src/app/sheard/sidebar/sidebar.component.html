@@ -1,6 +1,6 @@
 <section id="side">
-
-  <div class="text-center mt-3">
+<div class="row">
+  <div class="text-center mt-3" >
     <img
       src="../../../assets/images/logorest.png"
       alt=""
@@ -14,26 +14,28 @@
     class="d-block text-decoration-none"
     [routerLink]="item.link"
     routerLinkActive="bg-active"
-    
+   
   >
-  <!-- *ngIf="item.isActive" -->
-    <div class="item">
+
+  
+
+  <div class="item">
       <span><i [class]="item.icon"></i></span>
-      <span class="mx-2 m-3">{{ item.title }}</span>
+      <span class="mx-2 m-3" [ngClass]="{'d-none': !isOpened}">{{ item.title }}</span>
     </div>
   </a>
   </ng-container>
   <div class="item text-white mt-3 w-100">
     <span class="mx-2"><i class="fa-solid fa-lock"></i></span>
-    <span (click)="openDialog()" [ngClass]="{ 'd-none': !isOpened }" class=""
+    <span (click)="openDialog()"  class=""
       >Change Password</span
     >
   </div>
   <div (click)="logOut()" class="item text-white w-100 mt-3">
     <span class="mx-2"><i class="fa-solid fa-right-from-bracket"></i></span>
-    <span [ngClass]="{ 'd-none': !isOpened }" class="">Logout</span>
+    <span  class="">Logout</span>
   </div>
-  <!-- </div> -->
+  </div>
             <div class="" [class]="isOpened?'col-10':'col-11'">
                 <div>
                 </div>

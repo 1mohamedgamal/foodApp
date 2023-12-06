@@ -1,6 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { CategoriesService } from '../../services/categories.service';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-edit-category',
@@ -8,12 +7,14 @@ import { CategoriesService } from '../../services/categories.service';
   styleUrls: ['./add-edit-category.component.scss'],
 })
 export class AddEditCategoryComponent {
+  categoryName: string = '';
+
   constructor(
     public dialogRef: MatDialogRef<AddEditCategoryComponent>,
-    private _CategoriesService: CategoriesService
-  ) {}
-
-  categoryName: string = '';
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.categoryName = this.data.categoryName || '';
+  }
 
   onClose() {
     this.dialogRef.close();

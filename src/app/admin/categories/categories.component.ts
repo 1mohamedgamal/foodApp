@@ -13,7 +13,7 @@ import { ICategoryTable, ICategory } from '../models/cateogry';
   styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent implements OnInit {
-item: any;
+  item: any;
   constructor(
     private _CategoriesService: CategoriesService,
     private dialog: MatDialog,
@@ -66,12 +66,12 @@ item: any;
     });
   }
   performAction(item: any, action: string) {
-  if (action === 'delete') {
-    this.openDeleteDialog(item);
-  } else if (action === 'edit') {
-    this.openEditCategory(item);
+    if (action === 'delete') {
+      this.openDeleteDialog(item);
+    } else if (action === 'edit') {
+      this.openEditCategory(item);
+    }
   }
-}
 
   onAddCategory(data: string) {
     this._CategoriesService.addCategory(data).subscribe({
@@ -119,7 +119,7 @@ item: any;
 
   openEditCategory(categoryData: any) {
     const dialogRef = this.dialog.open(AddEditCategoryComponent, {
-      data: categoryData,
+      data: { categoryName: categoryData.name },
       width: '40%',
     });
     console.log(categoryData.name);

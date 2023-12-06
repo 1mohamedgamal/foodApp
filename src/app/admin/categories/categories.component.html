@@ -55,7 +55,6 @@
           <th>Creation Date</th>
           <th>Modification Date</th>
           <th>actions</th>
-          <!-- <th class="text-center">Edit</th> -->
         </tr>
       </thead>
       <tbody>
@@ -63,9 +62,6 @@
           <td>{{ item.name }}</td>
           <td>{{ item.creationDate | date : "dd-mm--yyyy, hh:mm a" }}</td>
           <td>{{ item.modificationDate | date : "dd-mm--yyyy, hh:mm a" }}</td>
-          <!-- <td (click)="openDeleteDialog(item)" class="text-center"> -->
-          <!-- <a><i class="fa-solid fa-calendar-xmark text-danger"></i></a> -->
-          <!-- </td> -->
           <div class="dropdown">
             <a
               class="text-muted"
@@ -79,12 +75,12 @@
             <ul class="dropdown-menu">
               <li>
                 <td (click)="openDeleteDialog(item)" class="dropdown-item">
-                  <a><i class="fa-solid fa-trash-alt text-danger"></i></a>
+                  <a><i class="fa-solid fa-trash-alt"></i> Delete</a>
                 </td>
               </li>
               <li>
-                <td (click)="openEditCategory(item)" class="dropdown-item ">
-                  <a><i class="fa-solid fa-pen-to-square"></i></a>
+                <td (click)="openEditCategory(item)" class="dropdown-item">
+                  <a><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                 </td>
               </li>
             </ul>

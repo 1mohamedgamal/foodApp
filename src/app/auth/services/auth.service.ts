@@ -73,4 +73,3 @@ export class AuthService {
     return this._HttpClient.put('Users/ChangePassword', data);
   }
 }
-

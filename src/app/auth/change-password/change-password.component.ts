@@ -8,6 +8,7 @@ import { LoginComponent } from '../login/login.component';
 LoginComponent;
 @Component({
   selector: 'app-change-password',
+
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.scss'],
 })

@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ToastrModule } from 'ngx-toastr';
+import { DeleteComponent } from './delete/delete/delete.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   imports: [
@@ -27,7 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     MatDialogModule,
     MatPaginatorModule,
-
+    NgxDropzoneModule,
     RouterModule,
   ],
   declarations: [
@@ -35,6 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     NavbarComponent,
     SidebarComponent,
     HomeComponent,
+    DeleteComponent,
   ],
   exports: [
     MatIconModule,
@@ -46,6 +49,10 @@ import { ToastrModule } from 'ngx-toastr';
     NavbarComponent,
     SidebarComponent,
     MatPaginatorModule,
+    NgxDropzoneModule,
+    DeleteComponent,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class SheardModule {}
