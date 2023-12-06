@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SheardModule } from '../sheard/sheard.module';
+import { SharedModule } from '../sheard/shared.module';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
@@ -29,11 +29,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('../admin/users/users.module').then((m) => m.UsersModule),
   },
-  
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), SheardModule],
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   declarations: [AdminComponent],
 })
 export class AdminModule {}

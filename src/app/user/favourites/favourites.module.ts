@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FavouritesComponent } from './favourites.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SheardModule } from 'src/app/sheard/sheard.module';
+import { SharedModule } from 'src/app/sheard/shared.module';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, SheardModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   declarations: [FavouritesComponent],
 })
 export class FavouritesModule {}

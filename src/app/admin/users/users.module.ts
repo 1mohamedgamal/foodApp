@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
 import { Routes, RouterModule } from '@angular/router';
-import { SheardModule } from 'src/app/sheard/sheard.module';
+import { SharedModule } from 'src/app/sheard/shared.module';
 
 const routes: Routes = [{ path: '', component: UsersComponent }];
 
-
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), SheardModule],
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   declarations: [UsersComponent],
 })
 export class UsersModule {}

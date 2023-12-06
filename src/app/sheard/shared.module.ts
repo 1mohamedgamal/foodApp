@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SheardComponent } from './sheard.component';
+import { SheardComponent as sharedComponent } from './shared.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,7 +33,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     RouterModule,
   ],
   declarations: [
-    SheardComponent,
+    sharedComponent,
     NavbarComponent,
     SidebarComponent,
     HomeComponent,
@@ -55,4 +55,4 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     FormsModule,
   ],
 })
-export class SheardModule {}
+export class SharedModule {}

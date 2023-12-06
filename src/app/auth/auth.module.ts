@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 // import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { SheardModule } from '../sheard/sheard.module';
+import { SharedModule } from '../sheard/shared.module';
 import { RequestResetPasswordComponent } from './request-reset-password/request-reset-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), SheardModule],
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   declarations: [
     LoginComponent,
     RequestResetPasswordComponent,

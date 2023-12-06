@@ -6,7 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { SheardModule } from '../sheard/sheard.module';
+import { SharedModule } from '../sheard/shared.module';
 
 import { HomeComponent } from '../sheard/home/home.component';
 
@@ -38,7 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, SheardModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   declarations: [DashboardComponent],
 })
 export class DashboardModule {}
