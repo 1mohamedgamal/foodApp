@@ -1,3 +1,58 @@
-<p>
-  favourites works!
-</p>
+<section class="page-header">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-9">
+        <div>
+          <h3>Favourite <span class="fw-light h3">items</span></h3>
+          <p>
+            You can now add your items that any user can order it from the
+            Application and you can edit
+          </p>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="text-end">
+          <img src="../../../assets/images/catIcon.png" class="w-75" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="container ">
+
+<div class="position-absolute top-50 start-50 translate-middle d-flex " *ngIf="myFav">
+  
+<div class="animate__animated animate bounce card mb-4" style="width: 18rem;" *ngFor="let item of myFav">
+  <div class="container mt-3">
+    <img
+     *ngIf="item.recipe.imagePath"
+            class="rounded-bottom w-100"
+            [src]="'https://upskilling-egypt.com/' + item.recipe.imagePath">
+            <img
+            *ngIf="!item.recipe.imagePath"
+            class="rounded-5 w-100 "
+            src="../../../assets/images/dummy-image-square.jpg"
+            />
+
+  </div>
+  <div class="card-body">
+          <h4>{{ item.recipe.name }}</h4>
+          <p>{{ item.recipe.description }}</p>
+        <!-- <a
+          (click)="removeFav(item.id)"
+          class="delete-icon text-decoration-none d-flex justify-content-center align-items-center"
+        >
+          <i class="fa-solid fa-heart-circle-xmark"></i>
+        </a>
+
+
+        <a [routerLink]="['/userRecipes']" class="btn btn-primary mb-1 mt-1 ">Go now</a> -->
+  
+  <button class="btn btn-danger" (click)="removeFav(item.id)"> remove</button>
+      </div>
+
+</div>
+  </div>
+</div>

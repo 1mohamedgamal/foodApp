@@ -48,43 +48,46 @@
     </div>
   </div>
   <div>
-    <table class="table table-striped">
+    <div>
+    <table class="table table-striped custom-table">
       <thead>
         <tr>
           <th>Name</th>
           <th>Creation Date</th>
           <th>Modification Date</th>
-          <th>actions</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of tableData">
           <td>{{ item.name }}</td>
-          <td>{{ item.creationDate | date : "dd-mm--yyyy, hh:mm a" }}</td>
-          <td>{{ item.modificationDate | date : "dd-mm--yyyy, hh:mm a" }}</td>
-          <div class="dropdown">
-            <a
-              class="text-muted"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i class="fa-solid fa-ellipsis fa-lg"></i>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <td (click)="openDeleteDialog(item)" class="dropdown-item">
-                  <a><i class="fa-solid fa-trash-alt"></i> Delete</a>
-                </td>
-              </li>
-              <li>
-                <td (click)="openEditCategory(item)" class="dropdown-item">
-                  <a><i class="fa-solid fa-pen-to-square"></i> Edit</a>
-                </td>
-              </li>
-            </ul>
-          </div>
+          <td>{{ item.creationDate | date : "dd-MM-yyyy, hh:mm a" }}</td>
+          <td>{{ item.modificationDate | date : "dd-MM-yyyy, hh:mm a" }}</td>
+          <td class="action-cell">
+            <div class="dropdown">
+              <a
+                class="text-muted"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa-solid fa-ellipsis fa-lg"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" (click)="openDeleteDialog(item)">
+                    <i class="fa-solid fa-trash-alt"></i> Delete
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" (click)="openEditCategory(item)">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -105,4 +108,3 @@
     >
     </mat-paginator>
   </div>
-</section>

@@ -26,6 +26,3 @@ export class RequestResetPasswordComponent {
     this.dialogRef.close();
   }
 }
-
-
-

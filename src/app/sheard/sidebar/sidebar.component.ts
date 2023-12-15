@@ -8,7 +8,7 @@ interface IMenu {
   title: string;
   icon: string;
   link: string;
-  isActive: boolean;
+  isActive: Boolean;
 }
 
 @Component({
@@ -37,7 +37,8 @@ export class SidebarComponent {
       title: 'home',
       icon: 'fa-solid fa-home',
       link: '/dashboard',
-      isActive: this.isAdmin() || this.isUser(),
+      isActive: this.isAdmin(),
+      // isActive: this.isAdmin() || this.isUser(),
     },
     {
       title: 'Users',

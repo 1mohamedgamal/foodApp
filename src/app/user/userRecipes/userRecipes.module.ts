@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserRecipesComponent } from './userRecipes.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/sheard/shared.module';
+import { RecipeDataComponent } from './recipe-data/recipe-data/recipe-data.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
-  declarations: [UserRecipesComponent],
+  declarations: [UserRecipesComponent, RecipeDataComponent],
 })
 export class UserRecipesModule {}

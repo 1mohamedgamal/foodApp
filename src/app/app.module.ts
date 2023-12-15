@@ -11,14 +11,18 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { SharedModule } from './sheard/shared.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppAuthGuard } from './sheard/auth.guard';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    MatButtonModule,
     AppRoutingModule,
+    MatCardModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule,

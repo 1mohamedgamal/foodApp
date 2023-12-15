@@ -15,6 +15,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ToastrModule } from 'ngx-toastr';
 import { DeleteComponent } from './delete/delete/delete.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { MatCardModule } from '@angular/material/card';
+import { ThemeSwitchComponent } from './switch theme/theme-switch/theme-switch.component';
+
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
+
+//   BrowserModule,
+    //BrowserAnimationsModule,
+    //MatCardModule,
+    //MatButtonModule,
 
 @NgModule({
   imports: [
@@ -22,8 +32,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     ToastrModule.forRoot({}),
     MatIconModule,
     ReactiveFormsModule,
-    FormsModule,
-    MatDividerModule,
+    FormsModule,MatCardModule,
+    MatDividerModule,MatButtonToggleModule,
     MatButtonModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -37,10 +47,11 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     NavbarComponent,
     SidebarComponent,
     HomeComponent,
-    DeleteComponent,
+    DeleteComponent,ThemeSwitchComponent,
+    ThemeSwitchComponent,
   ],
   exports: [
-    MatIconModule,
+    MatIconModule,MatCardModule,
     MatDividerModule,
     MatButtonModule,
     HttpClientModule,
@@ -50,7 +61,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     SidebarComponent,
     MatPaginatorModule,
     NgxDropzoneModule,
-    DeleteComponent,
+    DeleteComponent,ThemeSwitchComponent,
     ReactiveFormsModule,
     FormsModule,
   ],

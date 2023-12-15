@@ -117,7 +117,7 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  openEditCategory(categoryData: any) {
+    openEditCategory(categoryData: any) {
     const dialogRef = this.dialog.open(AddEditCategoryComponent, {
       data: { categoryName: categoryData.name },
       width: '40%',

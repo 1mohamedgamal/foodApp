@@ -14,12 +14,13 @@ import { ICategory } from '../../models/cateogry';
   styleUrls: ['./add-edit-recipe.component.scss'],
 })
 export class AddEditRecipeComponent implements OnInit {
+  isEditMode: boolean = false;
+  isAddMode: boolean = true;
+  isUpdate: boolean = false;
   imgSrc: any;
   tags: ITag[] = [];
   categories: ICategory[] = [];
   recipeId: any;
-  isUpdate: boolean = false;
-  isView: boolean = false;
   recipeData: any;
   recipeForm = new FormGroup({
     name: new FormControl(null),
@@ -28,17 +29,27 @@ export class AddEditRecipeComponent implements OnInit {
     tagId: new FormControl(null),
     categoriesIds: new FormControl(null),
   });
+  form: any;
   constructor(
     private _HelperService: HelperService,
     private _RecipeService: RecipeService,
     private Router: Router,
     private _ToastrService: ToastrService,
-    private _ActivatedRoute: ActivatedRoute
+    _ActivatedRoute: ActivatedRoute,
+    private route: ActivatedRoute
   ) {
     this.recipeId = _ActivatedRoute.snapshot.params['id'];
     if (this.recipeId) {
       this.getRecpesById(this.recipeId);
       this.isUpdate = true;
+      this.route.url.subscribe((url) => {
+        this.isEditMode = url.some((segment) => segment.path === 'edit');
+        this.disableFormControls();
+      });
+      this.route.url.subscribe((url) => {
+        this.isAddMode = url.some((segment) => segment.path === 'add');
+        this.enableFormControls();
+      });
     } else {
       this.isUpdate = false;
     }
@@ -49,8 +60,25 @@ export class AddEditRecipeComponent implements OnInit {
     this.getAllCategories();
   }
 
-  viewRecipe() {
-    this.recipeForm.disable();
+  disableFormControls() {
+    if (!this.isEditMode) {
+      this.recipeForm.get('name')?.disable();
+      this.recipeForm.get('price')?.disable();
+      this.recipeForm.get('description')?.disable();
+      this.recipeForm.get('tagId')?.disable();
+      this.recipeForm.get('categoriesIds')?.disable();
+      this.recipeForm.get('recipeImage')?.disable();
+    }
+  }
+  enableFormControls() {
+    if (this.isAddMode) {
+      this.recipeForm.get('name')?.enable();
+      this.recipeForm.get('price')?.enable();
+      this.recipeForm.get('description')?.enable();
+      this.recipeForm.get('tagId')?.enable();
+      this.recipeForm.get('categoriesIds')?.enable();
+      this.recipeForm.get('recipeImage')?.enable();
+    }
   }
 
   getRecpesById(id: number) {
@@ -97,7 +125,7 @@ export class AddEditRecipeComponent implements OnInit {
         next: (res) => {},
         error: (err) => {},
         complete: () => {
-          this._ToastrService.success('Recipe deleted', 'Success');
+          this._ToastrService.success('Recipe Added', 'Success');
           this.Router.navigate(['/dashboard/admin/recipes']);
         },
       });
@@ -112,6 +140,7 @@ export class AddEditRecipeComponent implements OnInit {
       },
     });
   }
+
   getAllCategories() {
     this._HelperService.getCategories().subscribe({
       next: (res) => {
@@ -120,8 +149,8 @@ export class AddEditRecipeComponent implements OnInit {
       },
     });
   }
-  files: File[] = [];
 
+  files: File[] = [];
   onSelect(event: any) {
     console.log(event);
     this.imgSrc = event.addedFiles[0];

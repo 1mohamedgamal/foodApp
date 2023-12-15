@@ -15,7 +15,7 @@ import { DeleteComponent } from '../categories/components/delete/delete.componen
 export class RecipesComponent implements OnInit {
   tableResponse: IRecipeTable | undefined;
   tableData: IRecipe[] = [];
-  pageSize = 10;
+  pageSize = 4;
   pageNumber = 1;
   tagId = 0;
   categoryId = 0;
@@ -23,6 +23,7 @@ export class RecipesComponent implements OnInit {
   categories: ICategory[] = [];
   searchValue = '';
   recipeData: any;
+  recipeForm: any;
 
   constructor(
     private _RecipeService: RecipeService,
@@ -39,13 +40,14 @@ export class RecipesComponent implements OnInit {
   }
 
   getTableData() {
-    const params = {
+    const prams = {
       pageSize: this.pageSize,
       pageNumber: this.pageNumber,
       name: this.searchValue,
       tagId: this.tagId,
+      categoryId: this.categoryId,
     };
-    this._RecipeService.getRecipes(params).subscribe({
+    this._RecipeService.getRecipes(prams).subscribe({
       next: (res: IRecipeTable) => {
         this.tableResponse = res;
         this.tableData = this.tableResponse?.data || [];
@@ -105,8 +107,8 @@ export class RecipesComponent implements OnInit {
         this._ToastrService.error('Error');
       },
       complete: () => {
-        this._ToastrService.success('Recipe deleted', 'Success');
         this.getTableData();
+        this._ToastrService.success('Recipe deleted', 'Success');
       },
     });
   }
