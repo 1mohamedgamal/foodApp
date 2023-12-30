@@ -1,4 +1,4 @@
-<section class="page-header py-5 bg-light">
+<!-- <section class="page-header py-5 bg-light">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-9">
@@ -22,8 +22,8 @@
       </div>
     </div>
   </div>
-</section>
-<section class=" py-5">
+</section> -->
+<!-- <section class=" py-5">
   <div class="container mt-5">
     <div class="row align-items-center justify-content-center">
       <div class="col-md-4 text-center">
@@ -51,3 +51,45 @@
     </div>
   </div>
 </section>
+<section> -->
+<div class="homeBg position-relative">
+ <div class="image position-absolute top-100 start-50 translate-middle">
+      <img
+        *ngIf="currentUser && currentUser.imagePath"
+        [src]="'https://upskilling-egypt.com/' + currentUser.imagePath"
+        class="img-fluid rounded-circle"
+        alt="Profile Image"
+      />
+      <img
+        *ngIf="!currentUser || !currentUser.imagePath"
+        src="../../../assets/images/dummy-avatar-profile.jpg"
+        class="img-fluid rounded-circle profile-img smaller-img"
+        alt="Default Profile Image"
+      />
+    </div>
+</div>
+
+<div class="box1 py-5 box d-flex justify-content-center">
+  <div class="content">
+   
+    <div class="level">
+      <p class="d-flex">{{ currentUser?.group?.name }}</p>
+    </div>
+    <div class="text">
+      <p class="name">{{ currentUser?.userName }}</p>
+      <p class="fs-5 text-muted">{{ currentUser?.phoneNumber }}</p>
+
+      <p class="job_discription">{{ currentUser?.email }}</p>
+      <p class="fs-5 text-muted">{{ currentUser?.country }}</p>
+    </div>
+
+    <div class="button">
+      <div>
+        <button class="message" type="button">Message</button>
+      </div>
+      <div>
+        <button class="connect" type="button">Connect</button>
+      </div>
+    </div>
+  </div>
+</div>

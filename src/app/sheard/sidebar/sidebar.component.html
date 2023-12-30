@@ -1,4 +1,4 @@
-<section id="side">
+<section id="side" [ngClass]="{'col-6': !isOpened}">
 <div class="row">
   <div class="text-center mt-3" >
     <img
@@ -14,13 +14,14 @@
     class="d-block text-decoration-none"
     [routerLink]="item.link"
     routerLinkActive="bg-active"
-   
+          *ngIf="item.isActive"
+
   >
 
   
 
   <div class="item">
-      <span><i [class]="item.icon"></i></span>
+      <span [ngClass]="{'mx-3 fs-4': !isOpened}" ><i [class]="item.icon"></i></span>
       <span class="mx-2 m-3" [ngClass]="{'d-none': !isOpened}">{{ item.title }}</span>
     </div>
   </a>

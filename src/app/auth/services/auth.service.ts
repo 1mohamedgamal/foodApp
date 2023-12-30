@@ -8,7 +8,11 @@ import { Observable, tap } from 'rxjs';
 })
 export class AuthService {
   role: string | null = '';
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) {
+    if (localStorage.getItem('userToken') !== null) {
+      this.getProfile();
+    }
+  }
 
   getProfile() {
     let encoded: any = localStorage.getItem('userToken');
@@ -19,9 +23,12 @@ export class AuthService {
   }
 
   getRole() {
+    console.log(localStorage.getItem('role'));
+    console.log(localStorage.getItem('userToken'));
+
     if (
       localStorage.getItem('userToken') !== null &&
-      localStorage.getItem('role')
+      localStorage.getItem('role') !== null
     ) {
       this.role = localStorage.getItem('role');
     }

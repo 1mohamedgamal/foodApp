@@ -18,7 +18,7 @@ import { FavouriteService } from '../favourites/services/favourite.service';
 export class UserRecipesComponent implements OnInit {
   tableResponse: IRecipeTable | undefined;
   tableData: IRecipe[] = [];
-  pageSize = 10;
+  pageSize = 3;
   pageNumber = 1;
   tagId = 0;
   categoryId = 0;

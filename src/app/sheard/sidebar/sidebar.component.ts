@@ -8,7 +8,7 @@ interface IMenu {
   title: string;
   icon: string;
   link: string;
-  isActive: Boolean;
+  isActive: boolean;
 }
 
 @Component({
@@ -21,7 +21,9 @@ export class SidebarComponent {
     private router: Router,
     public dialog: MatDialog,
     private _AuthService: AuthService
-  ) {}
+  ) {
+    
+  }
   // menu: any;
   isOpened: boolean = true;
   ngOnInit() {}
