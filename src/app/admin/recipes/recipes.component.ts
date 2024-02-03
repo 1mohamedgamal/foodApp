@@ -66,7 +66,7 @@ export class RecipesComponent implements OnInit {
     });
   }
 
-  getAllCategories() {
+  getAllCategories() { 
     this._HelperService.getCategories().subscribe({
       next: (res) => {
         this.categories = res.data;
